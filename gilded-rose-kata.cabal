@@ -1,0 +1,42 @@
+cabal-version:      3.0
+name:               gilded-rose-kata
+version:            0.1.0.0
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Tom Wells
+maintainer:         tom@synthesis.co.za
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    hs-source-dirs:      app
+    exposed-modules:     GildedRose
+    ghc-options:         -Wall -O2
+    build-depends:       base,
+                         containers,
+                         text
+    default-language:    GHC2024
+
+executable gilded-rose-kata
+    import:           warnings
+    main-is:          Main.hs
+    other-modules:    GildedRose
+    build-depends:    base
+    hs-source-dirs:   app
+    default-language: GHC2024
+
+test-suite gilded-rose-kata-test
+  type:              exitcode-stdio-1.0
+  ghc-options:       -Wall
+  hs-source-dirs:    test
+  default-language:  GHC2024
+  main-is:           MainSpec.hs
+  build-depends:     base
+                   , gilded-rose-kata
+                   , hspec
+                   , hspec-expectations
+                   , QuickCheck
+
